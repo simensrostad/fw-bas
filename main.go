@@ -2,24 +2,18 @@ package main
 
 import (
 	. "./config"
-	"./elevio"
-	"./fsm"
-	"./fsmfunctions"
+	"./uuidhandler"
 	"./network"
 	"./network/localip"
-	"./orderhandler"
-	"fmt"
-	"os"
-	"os/exec"
-	"os/signal"
-	"time"
+	"./ble"
+ 	//"fmt"
+	// "os"
+	// "os/exec"
+	// "os/signal"
+	//"time"
 )
 
 func main() {
-
-	new_order := make(chan elevio.ButtonEvent) //Order from OrderHandler to FSM
-
-
 
 	localUUID := make(chan string)
 
@@ -33,8 +27,12 @@ func main() {
 		//errorhandling
 	}
 
+	my_ip = "1"
+
 	go ble.Scanner(localUUID)
-	go uuidhandler.UUIDHandler(incoming_message, online_status, my_ip, localUUID)
-	go network.Sync(incoming_message, online_status, my_ip)
+	go uuidhandler.UUIDHandler(outgoing_message, incoming_message, online_status, my_ip, localUUID)
+	go network.Sync(outgoing_message, incoming_message, online_status, my_ip)
+
+	select{}
 
 }

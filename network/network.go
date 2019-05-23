@@ -5,16 +5,16 @@ import (
 	"./bcast"
 	"./network_helpfunctions"
 	"./peers"
+	"fmt"
 )
 
-func Sync(outgoing_message <-chan MESSAGE, incoming_message chan MESSAGE, online_status chan PEER_STATUS_UPDATE,
-	not_acknowledged_message chan MESSAGE, localIP string, elevator_failure <-chan bool) {
+func Sync(outgoing_message <-chan MESSAGE, incoming_message chan MESSAGE, online_status chan PEER_STATUS_UPDATE, localIP string) {
 
 	// Channals for network communication, used in broadcast and transmit functions
 	peer_update := make(chan peers.PeerUpdate)
 	peer_enable := make(chan bool)
-	broadcast_elevator := make(chan ELEVATOR)
-	recive_elevator := make(chan ELEVATOR)
+	//broadcast_elevator := make(chan ELEVATOR)
+	//recive_elevator := make(chan ELEVATOR)
 	broadcast_message := make(chan MESSAGE)
 	recive_message := make(chan MESSAGE)
 	broadcast_acknowledge := make(chan ACKNOWLEDGE_MESSAGE)
@@ -23,10 +23,10 @@ func Sync(outgoing_message <-chan MESSAGE, incoming_message chan MESSAGE, online
 
 	go peers.Transmitter(20004, localIP, peer_enable)
 	go peers.Receiver(20004, peer_update)
-	go bcast.Transmitter(15647, broadcast_elevator, broadcast_message, broadcast_acknowledge)
-	go bcast.Receiver(15647, recive_elevator, recive_message, recive_acknowledge)
+	go bcast.Transmitter(15647, /*broadcast_elevator,*/ broadcast_message, broadcast_acknowledge)
+	go bcast.Receiver(15647, /*recive_elevator,*/ recive_message, recive_acknowledge)
 
-	var broadcasted_orders [N_NODES]string // Array that holds all orders currently being broadcasted
+	//var broadcasted_orders [N_NODES]string // Array that holds all orders currently being broadcasted
 
 	for {
 		select {
@@ -52,9 +52,10 @@ func Sync(outgoing_message <-chan MESSAGE, incoming_message chan MESSAGE, online
 			}
 
 		case in_acknowledge := <-recive_acknowledge:
+			fmt.Println(in_acknowledge)
 
 		case broadcasted_order := <-check_acknowledge:
-
+			fmt.Println(broadcasted_order)
 		}
 	}
 }

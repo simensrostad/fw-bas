@@ -2,7 +2,7 @@ package config
 
 
 import (
-   . "../elevio"
+   //. "../elevio"
 )
 
 const (
