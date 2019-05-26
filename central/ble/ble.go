@@ -9,7 +9,7 @@ import (
     "./gatt"
 )
 
-var temp gatt.Advertisement
+var temp []gatt.UUID
 
 var DefaultClientOptions = []gatt.Option{
 	gatt.LnxMaxConnections(1),
@@ -30,11 +30,11 @@ func onStateChanged(d gatt.Device, s gatt.State) {
 
 func onPeriphDiscovered(p gatt.Peripheral, a *gatt.Advertisement, rssi int) {
 
-        temp.Services = a.Services
+        //temp.Services = a.Services
 
 }
 
-func Scanner(localUUID chan gatt.Advertisement) {
+func Scanner(localUUID chan []gatt.UUID) {
 	//
     // d, err := gatt.NewDevice(DefaultClientOptions...)
 	// if err != nil {

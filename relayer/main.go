@@ -16,10 +16,10 @@ import (
 
 func main() {
 
-	localUUID := make(chan gatt.Advertisement)
+	localUUID := make(chan []gatt.UUID)
 
 	//incoming_message := make(chan gatt.Advertisement)
-	outgoing_message := make(chan gatt.Advertisement)
+	outgoing_message := make(chan []gatt.UUID)
 
 	online_status := make(chan PEER_STATUS_UPDATE) // The online status of peers to OrderHandler
 

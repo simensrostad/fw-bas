@@ -9,15 +9,15 @@ import (
 	"../ble/gatt"
 )
 
-func Sync(outgoing_message <-chan gatt.Advertisement, incoming_message chan gatt.Advertisement, online_status chan PEER_STATUS_UPDATE, localIP string) {
+func Sync(outgoing_message <-chan []gatt.UUID, incoming_message chan []gatt.UUID, online_status chan PEER_STATUS_UPDATE, localIP string) {
 
 	// Channals for network communication, used in broadcast and transmit functions
 	peer_update := make(chan peers.PeerUpdate)
 	peer_enable := make(chan bool)
 	//broadcast_elevator := make(chan ELEVATOR)
 	//recive_elevator := make(chan ELEVATOR)
-	//broadcast_message := make(chan gatt.Advertisement)
-	recive_message := make(chan gatt.Advertisement)
+	//broadcast_message := make(chan []gatt.UUID)
+	recive_message := make(chan []gatt.UUID)
 	//broadcast_acknowledge := make(chan ACKNOWLEDGE_MESSAGE)
 	//recive_acknowledge := make(chan ACKNOWLEDGE_MESSAGE)
 

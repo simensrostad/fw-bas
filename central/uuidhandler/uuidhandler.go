@@ -8,7 +8,7 @@ import (
 	"../ble/gatt"
 )
 
-func UUIDHandler(outgoing_message chan gatt.Advertisement, incoming_message <-chan gatt.Advertisement, online_status <-chan PEER_STATUS_UPDATE, local_IP string, localUUID <-chan gatt.Advertisement) {
+func UUIDHandler(outgoing_message chan []gatt.UUID, incoming_message <-chan []gatt.UUID, online_status <-chan PEER_STATUS_UPDATE, local_IP string, localUUID <-chan []gatt.UUID) {
 
 	onlinestatusMatrix := [N_NODES]PEER_STATUS_UPDATE{}
 	onlinestatusMatrix[0].IP = local_IP
@@ -31,7 +31,7 @@ func UUIDHandler(outgoing_message chan gatt.Advertisement, incoming_message <-ch
 				fmt.Println("i found a package myself,", localUUID)
 
 			case incoming_message := <-incoming_message:
-				fmt.Println("This is incoming message from IP", incoming_message.Services)
+				fmt.Println("This is incoming message from IP", incoming_message)
 
 		}
 	}

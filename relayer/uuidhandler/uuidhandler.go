@@ -8,7 +8,7 @@ import (
 	"../ble/gatt"
 )
 
-func UUIDHandler(outgoing_message chan gatt.Advertisement, online_status <-chan PEER_STATUS_UPDATE, local_IP string, localUUID <-chan gatt.Advertisement) {
+func UUIDHandler(outgoing_message chan []gatt.UUID, online_status <-chan PEER_STATUS_UPDATE, local_IP string, localUUID <-chan []gatt.UUID) {
 
 	onlinestatusMatrix := [N_NODES]PEER_STATUS_UPDATE{}
 	onlinestatusMatrix[0].IP = local_IP
