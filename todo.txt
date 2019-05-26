@@ -1,0 +1,13 @@
+convert uuid to string before sending over udp
+change the message variable/channels to localUUID, outgoingmessage, incomingmessage to a struct containing (IP and UUID)
+
+Make relayers send their found uuids over udp as strings with their IP
+Implement a routine which interfaces with a window where a list can be manipulated for every patient etc...
+
+
+
+
+
+
+""make a local list which stopps the same uuid from being sent if it already has been send
+""implement some sort of acknowledging system
