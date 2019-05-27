@@ -5,11 +5,14 @@ import (
 //	"../fsmfunctions"
 	//"time"
     "fmt"
-    //"log"
+    "log"
     "./gatt"
+    "strings"
+    "time"
 )
 
 var temp []gatt.UUID
+var send string
 
 var DefaultClientOptions = []gatt.Option{
 	gatt.LnxMaxConnections(1),
@@ -31,22 +34,26 @@ func onStateChanged(d gatt.Device, s gatt.State) {
 func onPeriphDiscovered(p gatt.Peripheral, a *gatt.Advertisement, rssi int) {
 
         //temp.Services = a.Services
+        temp = a.Services
+        str := fmt.Sprint(temp)
+        t := strings.Replace(str, "[", "", -1)
+        send = strings.Replace(t, "]", "", -1)
 
 }
 
-func Scanner(localUUID chan []gatt.UUID) {
+func Scanner(localUUID chan string) {
 	//
-    // d, err := gatt.NewDevice(DefaultClientOptions...)
-	// if err != nil {
-	// 	log.Fatalf("Failed to open device, err: %s\n", err)
-	// 	return
-	// }
-	//
-	// // Register handlers.
-	// d.Handle(gatt.PeripheralDiscovered(onPeriphDiscovered))
-	// d.Init(onStateChanged)
-    // for {
-    //     localUUID <- temp
-    //     time.Sleep(500*time.Millisecond)
-    // }
+    d, err := gatt.NewDevice(DefaultClientOptions...)
+	if err != nil {
+		log.Fatalf("Failed to open device, err: %s\n", err)
+		return
+	}
+
+	// Register handlers.
+	d.Handle(gatt.PeripheralDiscovered(onPeriphDiscovered))
+	d.Init(onStateChanged)
+    for {
+        localUUID <- send
+        time.Sleep(500*time.Millisecond)
+    }
 }

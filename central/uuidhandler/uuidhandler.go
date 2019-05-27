@@ -5,10 +5,10 @@ import (
 //	"time"
 	. "../config"
 //	"../elevio"
-	"../ble/gatt"
+	// "../ble/gatt"
 )
 
-func UUIDHandler(outgoing_message chan []gatt.UUID, incoming_message <-chan []gatt.UUID, online_status <-chan PEER_STATUS_UPDATE, local_IP string, localUUID <-chan []gatt.UUID) {
+func UUIDHandler(outgoing_message chan string, incoming_message <-chan string, online_status <-chan PEER_STATUS_UPDATE, local_IP string, localUUID <-chan string) {
 
 	onlinestatusMatrix := [N_NODES]PEER_STATUS_UPDATE{}
 	onlinestatusMatrix[0].IP = local_IP

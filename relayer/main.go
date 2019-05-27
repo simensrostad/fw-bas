@@ -6,7 +6,7 @@ import (
 	"./network"
 	"./network/localip"
 	"./ble"
-	"./ble/gatt"
+	// "./ble/gatt"
  	//"fmt"
 	// "os"
 	// "os/exec"
@@ -16,10 +16,10 @@ import (
 
 func main() {
 
-	localUUID := make(chan []gatt.UUID)
+	localUUID := make(chan string)
 
 	//incoming_message := make(chan gatt.Advertisement)
-	outgoing_message := make(chan []gatt.UUID)
+	outgoing_message := make(chan string)
 
 	online_status := make(chan PEER_STATUS_UPDATE) // The online status of peers to OrderHandler
 

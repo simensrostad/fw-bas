@@ -6,7 +6,7 @@ import (
 	"../../ble/gatt"
 )
 
-func Broadcast_message(message []gatt.UUID, broadcast_message chan<- []gatt.UUID) {
+func Broadcast_message(message string, broadcast_message chan<- string) {
 	broadcast_ticker := time.NewTicker(30 * time.Millisecond)
 	broadcast_done_timer := time.NewTimer(150 * time.Millisecond)
 	for {
