@@ -3,9 +3,9 @@ package ble
 import (
 //	"../elevio"
 //	"../fsmfunctions"
-	//"time"
+	"time"
     "fmt"
-    //"log"
+    "log"
     "./gatt"
     "strings"
     //"time"
@@ -42,18 +42,18 @@ func onPeriphDiscovered(p gatt.Peripheral, a *gatt.Advertisement, rssi int) {
 }
 
 func Scanner(localUUID chan string) {
-	// //
-    // d, err := gatt.NewDevice(DefaultClientOptions...)
-	// if err != nil {
-	// 	log.Fatalf("Failed to open device, err: %s\n", err)
-	// 	return
-	// }
-    //
-	// // Register handlers.
-	// d.Handle(gatt.PeripheralDiscovered(onPeriphDiscovered))
-	// d.Init(onStateChanged)
-    // for {
-    //     localUUID <- send   //change back to send after network testing works
-    //     time.Sleep(1*time.Second)
-    // }
+	//
+    d, err := gatt.NewDevice(DefaultClientOptions...)
+	if err != nil {
+		log.Fatalf("Failed to open device, err: %s\n", err)
+		return
+	}
+
+	// Register handlers.
+	d.Handle(gatt.PeripheralDiscovered(onPeriphDiscovered))
+	d.Init(onStateChanged)
+    for {
+        localUUID <- send   //change back to send after network testing works
+        time.Sleep(10*time.Millisecond)
+    }
 }

@@ -2,7 +2,7 @@ package uuidhandler
 
 import (
 	"fmt"
-//	"time"
+	// "time"
 	. "../config"
 //	"../elevio"
 	// "../ble/gatt"
@@ -28,11 +28,15 @@ func UUIDHandler(outgoing_message chan string, incoming_message <-chan string, o
 					}
 
 			case localUUID := <-localUUID:
-				fmt.Println("i found a package myself,", localUUID)
+				if localUUID == "6e400001b5a3e393e0e9a50e24dcca9f"	{
+					fmt.Println("i found a package myself,", localUUID)
+				}
+
 
 			case incoming_message := <-incoming_message:
-				fmt.Println("This is incoming message from IP", incoming_message)
-
+				if incoming_message == "6e400001b5a3e393e0e9a50e24dcca9f"	{
+					fmt.Println("The Bacon found the package", incoming_message)
+				}
 		}
 	}
 }
