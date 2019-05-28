@@ -28,7 +28,7 @@ func main() {
 		//errorhandling
 	}
 
-	my_ip = "1"
+	my_ip = my_ip
 
 	go ble.Scanner(localUUID)
 	go uuidhandler.UUIDHandler(outgoing_message, online_status, my_ip, localUUID)

@@ -5,10 +5,10 @@ import (
 //	"../fsmfunctions"
 	//"time"
     "fmt"
-    "log"
+    //"log"
     "./gatt"
     "strings"
-    "time"
+    //"time"
 )
 
 var temp []gatt.UUID
@@ -42,18 +42,18 @@ func onPeriphDiscovered(p gatt.Peripheral, a *gatt.Advertisement, rssi int) {
 }
 
 func Scanner(localUUID chan string) {
-	//
-    d, err := gatt.NewDevice(DefaultClientOptions...)
-	if err != nil {
-		log.Fatalf("Failed to open device, err: %s\n", err)
-		return
-	}
-
-	// Register handlers.
-	d.Handle(gatt.PeripheralDiscovered(onPeriphDiscovered))
-	d.Init(onStateChanged)
-    for {
-        localUUID <- send
-        time.Sleep(500*time.Millisecond)
-    }
+	// //
+    // d, err := gatt.NewDevice(DefaultClientOptions...)
+	// if err != nil {
+	// 	log.Fatalf("Failed to open device, err: %s\n", err)
+	// 	return
+	// }
+    //
+	// // Register handlers.
+	// d.Handle(gatt.PeripheralDiscovered(onPeriphDiscovered))
+	// d.Init(onStateChanged)
+    // for {
+    //     localUUID <- send   //change back to send after network testing works
+    //     time.Sleep(1*time.Second)
+    // }
 }
