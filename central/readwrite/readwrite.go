@@ -8,12 +8,6 @@ import  (
     "os"
 )
 
-// type PATIENT struct {
-//     UUID_PATIENT string
-//     location string
-//     timestamp int
-// }
-
 func Write_to_file(elev PATIENT){
   elevator_json, _ := json.MarshalIndent(elev, "","")
   ioutil.WriteFile("UUIDdir.json", elevator_json, 0644)
