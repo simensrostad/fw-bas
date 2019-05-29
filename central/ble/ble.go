@@ -11,7 +11,6 @@ import (
     //"time"
 )
 
-var temp []gatt.UUID
 var send string
 
 var DefaultClientOptions = []gatt.Option{
@@ -33,9 +32,7 @@ func onStateChanged(d gatt.Device, s gatt.State) {
 
 func onPeriphDiscovered(p gatt.Peripheral, a *gatt.Advertisement, rssi int) {
 
-        //temp.Services = a.Services
-        temp = a.Services
-        str := fmt.Sprint(temp)
+        str := fmt.Sprint(a.Services)
         t := strings.Replace(str, "[", "", -1)
         send = strings.Replace(t, "]", "", -1)
 

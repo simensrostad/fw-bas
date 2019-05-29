@@ -6,7 +6,8 @@ import (
 	"./network"
 	"./network/localip"
 	"./ble"
- 	//"fmt"
+	//"./readwrite"
+ 	// "fmt"
 	// "os"
 	// "os/exec"
 	// "os/signal"
@@ -14,6 +15,8 @@ import (
 )
 
 func main() {
+
+	//fmt.Println(UUID_entry)
 
 	localUUID := make(chan string)
 

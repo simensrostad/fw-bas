@@ -25,3 +25,15 @@ type PEER_STATUS_UPDATE struct  {
   IP string
   ONLINE bool
 }
+
+type PATIENT struct {
+    NAME string
+    ID string
+    UUID string
+    LOCATION string
+    TIMESTAMP string
+}
+
+type Users struct {
+    Users []PATIENT
+}

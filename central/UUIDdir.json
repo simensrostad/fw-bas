@@ -1,0 +1,22 @@
+{
+  "USERS": [
+    {
+        "NAME": "Arne Slovi Brundal",
+        "UUID": "6e400001b5a3e393e0e9a50e24dcca9a",
+        "LOCATION": "badet",
+        "TIMESTAMP": "Wednesday, 29-May-19 11:36:36 CEST"
+    },
+    {
+        "NAME": "Hilde Brundal",
+        "UUID": "6e400001b5a3e393e0e9a50e24dcca9f",
+        "LOCATION": "soverommet",
+        "TIMESTAMP": "Wednesday, 29-May-19 11:41:36 CEST"
+    },
+    {
+        "NAME": "Jonathan Lundaas Brundal",
+        "UUID": "6e400001b5a3e393e0e9a50e24dcca9e",
+        "LOCATION": "badet",
+        "TIMESTAMP": "Wednesday, 29-May-19 11:36:36 CEST"
+    }
+  ]
+}
