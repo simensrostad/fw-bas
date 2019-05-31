@@ -6,6 +6,7 @@ import (
 	"./network"
 	"./network/localip"
 	"./ble"
+	"./web"
 	//"./readwrite"
  	// "fmt"
 	// "os"
@@ -33,6 +34,7 @@ func main() {
 	go ble.Scanner(localUUID)
 	go uuidhandler.UUIDHandler(outgoing_message, incoming_message, online_status, my_ip, localUUID)
 	go network.Sync(outgoing_message, incoming_message, online_status, my_ip)
+	go web.Application()
 
 	select{}
 }
