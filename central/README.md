@@ -1,2 +1,1 @@
-Stolav
-==========================================
+Alaram System Central Node Code
